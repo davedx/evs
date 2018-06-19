@@ -1,0 +1,389 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'>
+<title>Electric Vehicle Comparison - 2018</title>
+</head>
+<body>
+<div id='head'>
+  <h1>Electric Vehicle Comparison</h1>
+  <select id='region'>
+    <option value='us'>USA</option>
+    <option value='nl' selected>NL</option>
+  </select>
+</div>
+<div id='table'>
+  <table width='100%'>
+    <thead>
+      <tr>
+        <th></th>
+        <th>Model</th>
+        <th>Seats</th>
+        <th id='th-range'>Km</th>
+        <th id='th-money'>€</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr id='bolt' class='car'>
+        <td><div class='pic'></div></td>
+        <td class='model'>Chevrolet Bolt <span class='badge'></span></td>
+        <td class='seats'>5</td>
+        <td class='range'>383<span class='unit'>mi</span></td>
+        <td class='price'><span class='curr'>$</span>37,495</td>
+      </tr>
+      <tr id='e_golf' class='car'>
+        <td><div class='pic'></div></td>
+        <td class='model'>Volkswagen e-Golf <span class='badge'></span></td>
+        <td class='seats'>5</td>
+        <td class='range'>300<span class='unit'>mi</span></td>
+        <td class='price'><span class='curr'>€</span>39.540</td>
+      </tr>
+      <tr id='focus' class='car'>
+        <td><div class='pic'></div></td>
+        <td class='model'>Ford Focus Electric<span class='badge'></span></td>
+        <td class='seats'>5</td>
+        <td class='range'>115<span class='unit'>mi</span></td>
+        <td class='price'><span class='curr'>$</span>29,120</td>
+      </tr>
+      <tr id='i3' class='car'>
+        <td><div class='pic'></div></td>
+        <td class='model'>BMW i3 <span class='badge'></span></td>
+        <td class='seats'>4</td>
+        <td class='range'>300<span class='unit'>km</span></td>
+        <td class='price'><span class='curr'>€</span>40.412</td>
+      </tr>
+      <tr id='ioniq' class='car'>
+        <td><div class='pic'></div></td>
+        <td class='model'>Hyundai IONIQ <span class='badge'></span></td>
+        <td class='seats'>4</td>
+        <td class='range'>300<span class='unit'>km</span></td>
+        <td class='price'><span class='curr'>€</span>40.412</td>
+      </tr>
+      <!--
+      <tr id='i_pace' class='car'>
+        <td><div class='pic'></div></td>
+        <td class='model'>Jaguar I-PACE <span class='badge'></span></td>
+        <td class='seats'>5</td>
+        <td class='range'>480<span class='unit'>km</span></td>
+        <td class='price'><span class='curr'>€</span>?</td>
+      </tr>
+      -->
+      <tr id='leaf' class='car'>
+        <td><div class='pic'></div></td>
+        <td class='model'>Nissan Leaf <span class='badge'>Acenta</span></td>
+        <td class='seats'>5</td>
+        <td class='range'>378<span class='unit'>km</span></td>
+        <td class='price'><span class='curr'>€</span>36.890</td>
+      </tr>
+      <tr id='model_s' class='car'>
+        <td><div class='pic'></div></td>
+        <td class='model'>Tesla Model S <span class='badge'>75D</span></td>
+        <td class='seats'><select class='edit'></select></td>
+        <td class='range'>
+          <select class='edit'></select>
+          <span class='unit'>km</span>
+        </td>
+        <td class='price'><span class='curr'>€</span>87.120</td>
+      </tr>
+      <tr id='model_x' class='car'>
+        <td><div class='pic'></div></td>
+        <td class='model'><span class='make'>Tesla</span> Model X <span class='badge'>75D</span></td>
+        <td class='seats'><select class='edit'></select></td>
+        <td class='range'>
+          <select class='edit'></select>
+          <span class='unit'>km</span>
+        </td>
+        <td class='price'><span class='curr'>€</span>93.870</td>
+      </tr>
+      <tr id='zoe' class='car'>
+        <td><div class='pic'></div></td>
+        <td class='model'>Renault Zoe <span class='badge'></span></td>
+        <td class='seats'>4</td>
+        <td class='range'>300<span class='unit'>km</span></td>
+        <td class='price'><span class='curr'>€</span>32.890</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div class='intro'>
+  <p><strong>Welcome to the electric vehicle comparison site!</strong></p>
+  <p>Electric vehicles can be difficult to compare as the market is still new and many people are unfamiliar with the most relevant data points.</p>
+  <p>The range of an electric vehicle is its most important feature, and while most manufacturers try to be clear (Renault's Zoe website
+    has a very nice range calculator), others are less transparent. This website is an attempt to pinpoint the three most important features of
+    an electric vehicle in an easy to read table so buyers know exactly what they're getting and for how much, and to allow an easy comparison
+    with other electric vehicles.</p>
+  <p><strong>What this website is not:</strong> electric vehicles in this table are for sale today. Promised vehicles with unbelievable ranges or
+  insane charging speeds that are still in R&amp;D will not be included. All manufacturers will be treated equally here, from Audi to Tesla!</p>
+</div>
+</body>
+<style>
+* {font-family: sans-serif; font-size: 19px; color: #0c9cdc; box-sizing: border-box}
+select {-webkit-appearance: none; -moz-appearance: none; appearance: none}
+#head {background: #0c9cdc}
+#head h1 {display: inline-block; font-size: 21px; color: #f8f8f8; font-weight: 600; margin: 0; padding: 10px}
+#region {color: white; float: right; font-weight: 600; background: #0a7cbc; padding: 4px 10px; margin: 5px}
+body {background: #f8f8f8; margin: 0; padding: 0}
+#table {margin: 0 10px}
+table {border-collapse: collapse}
+tr {border-bottom: 1px solid #0cd}
+tr:nth-child(odd) {background: #f8f8ff}
+tr:nth-child(even) {background: #f3f3f3}
+th {padding: 10px 0; text-align: left}
+td {padding: 6px 0}
+#picker {position: absolute; background: white; cursor: pointer; border: 1px solid #0cd; padding: 6px 10px; display: inline-block; line-height: 25px}
+.model {min-width: 115px}
+.unit {margin-left: 4px}
+.curr {margin-right: 4px}
+.pic {
+  width: 320px;
+  height: 139px;
+  background-repeat: no-repeat;
+  background-color: #eee;
+}
+.edit {background: white; border: 1px solid #0de;display: inline-block;
+    padding: 2px 5px}
+@media (max-width: 414px) {
+  #head h1 {font-size: 16px}
+  #region {font-size: 15px}
+  .pic {
+    width: 0px;
+    display: none;
+  }
+  .unit, .curr {
+    display: none;
+  }
+  * {
+    font-size: 16px;
+  }
+}
+@media (min-width: 415px) and (max-width: 1024px) {
+  .pic {
+    width: 160px;
+    height: 70px;
+    background-size: contain;
+    background-position: top center;
+  }
+}
+#bolt .pic {background-image: url('bolt.png')}
+#focus .pic {background-image: url('focus.png')}
+#i3 .pic {background-image: url('i3.png')}
+#leaf .pic {background-image: url('leaf.png')}
+#model_x .pic {background-image: url('model_x.png')}
+#model_s .pic {background-image: url('model_s.png')}
+#zoe .pic {background-image: url('zoe.png')}
+.intro {margin: 30px 10px}
+</style>
+<script>
+  const id = i => document.getElementById(i)
+  const cl = (a, b) => (b || document).getElementsByClassName(a)
+  const cl0 = (a, b) => (b || document).getElementsByClassName(a)[0]
+  const h = (a, b) => a.innerHTML = b
+
+  const regions = {
+    us: {moneyUnit: '$', locale: 'en-us', rangeUnit: 'Mi'},
+    nl: {moneyUnit: '€', locale: 'nl-nl', rangeUnit: 'Km'}
+  }
+
+  const config = {
+    rangeUnit: 'km',
+    moneyUnit: '€',
+    locale: 'nl-nl',
+    region: 'nl'
+  }
+
+  const data = {
+    bolt: {
+      us: {
+        base: 37495
+      }
+    },
+    e_golf: {
+      nl: {
+        base: 39540
+      }
+    },
+    focus: {
+      us: {
+        base: 29120
+      }
+    },
+    i3: {
+      nl: {
+        base: 40412
+      }
+    },
+    ioniq: {
+      nl: {
+        base: 0
+      }
+    },
+    i_pace: {
+      nl: {
+        base: 0
+      }
+    },
+    leaf: {
+      nl: {
+        base: 36890
+      }
+    },
+    model_s: {
+      nl: {
+        base: 87120,
+        ranges: [{
+          val: 490,
+          del: 0,
+          name: '75D'
+        }, {
+          val: 632,
+          del: 23050,
+          name: '100D'
+        }, {
+          val: 613,
+          del: 54300,
+          name: 'P100D'
+        }],
+        seats: [{
+          val: 5,
+          del: 0
+        }, {
+          val: 7,
+          del: 4200
+        }]
+      },
+      us: {
+        base: 74500,
+        ranges: [{
+          val: 259,
+          del: 0,
+          name: '75D'
+        }, {
+          val: 335,
+          del: 19500,
+          name: '100D'
+        }, {
+          val: 315,
+          del: 60500,
+          name: 'P100D'
+        }],
+        seats: [{
+          val: 5,
+          del: 0
+        }, {
+          val: 7,
+          del: 4000
+        }]
+      }
+    },
+    model_x: {
+      nl: {
+        base: 93870,
+        ranges: [{
+          val: 417,
+          del: 0,
+          name: '75D'
+        }, {
+          val: 565,
+          del: 19650,
+          name: '100D'
+        }, {
+          val: 542,
+          del: 65600,
+          name: 'P100D'
+        }],
+        seats: [{
+          val: 5,
+          del: 0
+        }, {
+          val: 6,
+          del: 6300
+        }, {
+          val: 7,
+          del: 3200
+        }]
+      }
+    },
+    zoe: {
+      nl: {
+        base: 32890
+      }
+    }
+  }
+
+  const populateSelect = (selectEl, data) => {
+    for (let i=0; i<data.length; i++) {
+      const opt = document.createElement('option');
+      opt.value = data[i].val
+      opt.text = data[i].val
+      selectEl.add(opt)
+    }
+  }
+
+  const update = (parentId, data) => {
+    const parent = id(parentId)
+    const badgeEl = cl0('badge', parent)
+    const rangeEl = cl0('range', parent)
+    const priceEl = cl0('price', parent)
+    const seatsEl = cl0('seats', parent)
+    const range = data.ranges[data.rangesIdx]
+    const seats = data.seats[data.seatsIdx]
+    const price = data.base + range.del + seats.del
+    h(badgeEl, range.name)
+    h(priceEl, `<span class='curr'>${config.moneyUnit}</span>${price.toLocaleString(config.locale)}`)
+  }
+
+  const initSelect = (key, prop, props) => {
+    const parent = id(key)
+    const select = cl0('edit', cl0(prop, parent))
+    populateSelect(select, data[key][config.region][props])
+    const carData = data[key][config.region]
+    select.onchange = (e) => {
+      carData[`${props}Idx`] = carData[props].findIndex(r => r.val === Number(e.target.value))
+      update(parent.id, carData)
+    }
+  }
+
+  const filterRegion = (region) => {
+    config.region = region
+    config.moneyUnit = regions[region].moneyUnit
+    config.rangeUnit = regions[region].rangeUnit
+    h(id('th-money'), config.moneyUnit)
+    h(id('th-range'), config.rangeUnit)
+    const carEls = cl('car')
+    for (let i=0; i<carEls.length; i++) {
+      const key = carEls[i].id
+      const display = data[key][config.region] ? '' : 'none'
+      carEls[i].style.display = display
+    }
+  }
+
+  const initCar = (carData) => {
+    carData.rangesIdx = 0;
+    carData.seatsIdx = 0;
+    if (!carData.ranges) {
+      carData.ranges = []
+    } else {
+      initSelect(key, 'range', 'ranges')
+    }
+    if (!carData.seats) {
+      carData.seats = []
+    } else {
+      initSelect(key, 'seats', 'seats')
+    }
+  }
+
+  window.onload = () => {
+    for (key in data) {
+      if (data[key][config.region]) {
+        initCar(data[key][config.region])
+      }
+    }
+    id('region').onchange = (e) => {
+      filterRegion(e.target.value)
+    }
+    filterRegion(config.region)
+  }
+</script>
+</body>
+</html>
