@@ -238,6 +238,11 @@ td {padding: 6px 0}
         base: 33995,
         range: 280,
         seats: 4
+      },
+      us: {
+        base: 29500,
+        range: 124,
+        seats: 4
       }
     },
     leaf: {
@@ -359,6 +364,10 @@ td {padding: 6px 0}
   }
 
   const populateSelect = (selectEl, data) => {
+    if (!selectEl) {
+      console.log('no selectEl for: ', data)
+      return
+    }
     selectEl.options.length = 0
     for (let i=0; i<data.length; i++) {
       const opt = document.createElement('option');
@@ -378,6 +387,9 @@ td {padding: 6px 0}
     const seats = data.seats[data.seatsIdx]
     const price = data.base + range.del + seats.del
     h(badgeEl, range.name)
+    if (data.ranges.length === 1) {
+      h(rangeEl, `${range.val}<span class='unit'>${config.rangeUnit}</span>`)
+    }
     h(priceEl, `<span class='curr'>${config.moneyUnit}</span>${price.toLocaleString(config.locale)}`)
   }
 
