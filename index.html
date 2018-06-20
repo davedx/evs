@@ -36,7 +36,7 @@
         <td><div class='pic'></div></td>
         <td class='model'>Volkswagen e-Golf <span class='badge'></span></td>
         <td class='seats'>5</td>
-        <td class='range'>300<span class='unit'>mi</span></td>
+        <td class='range'>300<span class='unit'>km</span></td>
         <td class='price'><span class='curr'>€</span>39.540</td>
       </tr>
       <tr id='focus' class='car'>
@@ -57,8 +57,8 @@
         <td><div class='pic'></div></td>
         <td class='model'>Hyundai IONIQ <span class='badge'></span></td>
         <td class='seats'>4</td>
-        <td class='range'>300<span class='unit'>km</span></td>
-        <td class='price'><span class='curr'>€</span>40.412</td>
+        <td class='range'>280<span class='unit'>km</span></td>
+        <td class='price'><span class='curr'>€</span>33.995</td>
       </tr>
       <!--
       <tr id='i_pace' class='car'>
@@ -166,8 +166,10 @@ td {padding: 6px 0}
   }
 }
 #bolt .pic {background-image: url('bolt.png')}
+#e_golf .pic {background-image: url('e_golf.png')}
 #focus .pic {background-image: url('focus.png')}
 #i3 .pic {background-image: url('i3.png')}
+#ioniq .pic {background-image: url('ioniq.png')}
 #leaf .pic {background-image: url('leaf.png')}
 #model_x .pic {background-image: url('model_x.png')}
 #model_s .pic {background-image: url('model_s.png')}
@@ -195,37 +197,54 @@ td {padding: 6px 0}
   const data = {
     bolt: {
       us: {
-        base: 37495
+        base: 37495,
+        range: 383,
+        seats: 5
       }
     },
     e_golf: {
       nl: {
-        base: 39540
+        base: 39540,
+        range: 300,
+        seats: 5
+      },
+      us: {
+        base: 30495,
+        range: 125,
+        seats: 5
       }
     },
     focus: {
       us: {
-        base: 29120
+        base: 29120,
+        range: 115,
+        seats: 5
       }
     },
     i3: {
       nl: {
-        base: 40412
+        base: 40412,
+        range: 300,
+        seats: 4
+      },
+      us: {
+        base: 48200,
+        range: 114,
+        seats: 4
       }
     },
     ioniq: {
       nl: {
-        base: 0
-      }
-    },
-    i_pace: {
-      nl: {
-        base: 0
+        base: 33995,
+        range: 280,
+        seats: 4
       }
     },
     leaf: {
       nl: {
-        base: 36890
+        base: 36890,
+        range: 378,
+        seats: 5
       }
     },
     model_s: {
@@ -302,16 +321,45 @@ td {padding: 6px 0}
           val: 7,
           del: 3200
         }]
+      },
+      us: {
+        base: 79500,
+        ranges: [{
+          val: 417,
+          del: 0,
+          name: '75D'
+        }, {
+          val: 565,
+          del: 16500,
+          name: '100D'
+        }, {
+          val: 542,
+          del: 60500,
+          name: 'P100D'
+        }],
+        seats: [{
+          val: 5,
+          del: 0
+        }, {
+          val: 6,
+          del: 6000
+        }, {
+          val: 7,
+          del: 3000
+        }]
       }
     },
     zoe: {
       nl: {
-        base: 32890
+        base: 32890,
+        range: 300,
+        seats: 4
       }
     }
   }
 
   const populateSelect = (selectEl, data) => {
+    selectEl.options.length = 0
     for (let i=0; i<data.length; i++) {
       const opt = document.createElement('option');
       opt.value = data[i].val
@@ -355,28 +403,39 @@ td {padding: 6px 0}
       const key = carEls[i].id
       const display = data[key][config.region] ? '' : 'none'
       carEls[i].style.display = display
+      if (display !== 'none') {
+        //console.log('updating '+key);
+        update(key, data[key][config.region])
+        initControls(key, data[key][config.region])
+      }
     }
   }
 
-  const initCar = (carData) => {
+  const initData = (carData) => {
     carData.rangesIdx = 0;
     carData.seatsIdx = 0;
-    if (!carData.ranges) {
-      carData.ranges = []
-    } else {
+    if (typeof carData.range === 'number') {
+      carData.ranges = [{val: carData.range, del: 0, name: ''}]
+    }
+    if (typeof carData.seats === 'number') {
+      carData.seats = [{val: carData.seats, del: 0}]
+    }
+  }
+
+  const initControls = (key, carData) => {
+    //console.log('initControls: ', key)
+    if (carData.ranges.length > 1) {
       initSelect(key, 'range', 'ranges')
     }
-    if (!carData.seats) {
-      carData.seats = []
-    } else {
+    if (carData.seats.length > 1) {
       initSelect(key, 'seats', 'seats')
     }
   }
 
   window.onload = () => {
-    for (key in data) {
-      if (data[key][config.region]) {
-        initCar(data[key][config.region])
+    for (let key in data) {
+      for (let region in data[key]) {
+        initData(data[key][region])
       }
     }
     id('region').onchange = (e) => {
