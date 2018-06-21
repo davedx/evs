@@ -3,11 +3,11 @@
 <head>
 <meta charset='UTF-8'>
 <meta name='viewport' content='width=device-width, initial-scale=1'>
-<title>Electric Vehicle Comparison - 2018</title>
+<title>Electric Cars 2018 - Electric Vehicle Comparison</title>
 </head>
 <body>
 <div id='head'>
-  <h1>Electric Vehicle Comparison</h1>
+  <h1>Electric Cars 2018 - Comparison</h1>
   <select id='region'>
     <option value='us'>USA</option>
     <option value='nl' selected>NL</option>
@@ -96,6 +96,13 @@
         </td>
         <td class='price'><span class='curr'>€</span>93.870</td>
       </tr>
+      <tr id='soul' class='car'>
+        <td><div class='pic'></div></td>
+        <td class='model'>Kia Soul <span class='badge'></span></td>
+        <td class='seats'>5</td>
+        <td class='range'>111<span class='unit'>km</span></td>
+        <td class='price'><span class='curr'>$</span>33,950</td>
+      </tr>
       <tr id='zoe' class='car'>
         <td><div class='pic'></div></td>
         <td class='model'>Renault Zoe <span class='badge'></span></td>
@@ -107,13 +114,14 @@
   </table>
 </div>
 <div class='intro'>
-  <p><strong>Welcome to the electric vehicle comparison site!</strong></p>
-  <p>Electric vehicles can be difficult to compare as the market is still new and many people are unfamiliar with the most relevant data points.</p>
-  <p>The range of an electric vehicle is its most important feature, and while most manufacturers try to be clear (Renault's Zoe website
+  <h2>Welcome to the electric cars comparison website!</h2>
+  <h3>Data current for 2018</h3>
+  <p>Electric cars can be difficult to compare as the market is still new and many people are unfamiliar with the most relevant data points.</p>
+  <p>The range of an electric car is its most important feature, and while most manufacturers try to be clear (Renault's Zoe website
     has a very nice range calculator), others are less transparent. This website is an attempt to pinpoint the three most important features of
     an electric vehicle in an easy to read table so buyers know exactly what they're getting and for how much, and to allow an easy comparison
     with other electric vehicles.</p>
-  <p><strong>What this website is not:</strong> electric vehicles in this table are for sale today. Promised vehicles with unbelievable ranges or
+  <p><strong>What this website is not:</strong> electric cars in this table are for sale today. Promised cars with unbelievable ranges or
   insane charging speeds that are still in R&amp;D will not be included. All manufacturers will be treated equally here, from Audi to Tesla!</p>
 </div>
 </body>
@@ -140,6 +148,8 @@ td {padding: 6px 0}
   height: 139px;
   background-repeat: no-repeat;
   background-color: #eee;
+  background-size: contain;
+  background-position: top center;
 }
 .edit {background: white; border: 1px solid #0de;display: inline-block;
     padding: 2px 5px}
@@ -161,8 +171,6 @@ td {padding: 6px 0}
   .pic {
     width: 160px;
     height: 70px;
-    background-size: contain;
-    background-position: top center;
   }
 }
 #bolt .pic {background-image: url('bolt.png')}
@@ -173,6 +181,7 @@ td {padding: 6px 0}
 #leaf .pic {background-image: url('leaf.png')}
 #model_x .pic {background-image: url('model_x.png')}
 #model_s .pic {background-image: url('model_s.png')}
+#soul .pic {background-image: url('soul.png')}
 #zoe .pic {background-image: url('zoe.png')}
 .intro {margin: 30px 10px}
 </style>
@@ -357,6 +366,18 @@ td {padding: 6px 0}
           val: 7,
           del: 3000
         }]
+      }
+    },
+    soul: {
+      nl: {
+        base: 36335,
+        range: 111,
+        seats: 5
+      },
+      us: {
+        base: 33950,
+        range: 111,
+        seats: 5
       }
     },
     zoe: {
