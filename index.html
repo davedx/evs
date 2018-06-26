@@ -9,8 +9,8 @@
 <div id='head'>
   <h1>Electric Cars 2018 - Comparison</h1>
   <select id='region'>
-    <option value='us'>USA</option>
-    <option value='nl' selected>NL</option>
+    <option value='us' selected>USA</option>
+    <option value='nl'>NL</option>
   </select>
 </div>
 <div id='table'>
@@ -135,8 +135,8 @@ body {background: #f8f8f8; margin: 0; padding: 0}
 #table {margin: 0 10px}
 table {border-collapse: collapse}
 tr {border-bottom: 1px solid #0cd}
-tr:nth-child(odd) {background: #f8f8ff}
-tr:nth-child(even) {background: #f3f3f3}
+tr:nth-child(odd) {background: #fafaff}
+tr:nth-child(even) {background: #fff}
 th {padding: 10px 0; text-align: left}
 td {padding: 6px 0}
 #picker {position: absolute; background: white; cursor: pointer; border: 1px solid #0cd; padding: 6px 10px; display: inline-block; line-height: 25px}
@@ -147,7 +147,6 @@ td {padding: 6px 0}
   width: 320px;
   height: 139px;
   background-repeat: no-repeat;
-  background-color: #eee;
   background-size: contain;
   background-position: top center;
 }
@@ -197,10 +196,6 @@ td {padding: 6px 0}
   }
 
   const config = {
-    rangeUnit: 'km',
-    moneyUnit: '€',
-    locale: 'nl-nl',
-    region: 'nl'
   }
 
   const data = {
@@ -479,7 +474,7 @@ td {padding: 6px 0}
     id('region').onchange = (e) => {
       filterRegion(e.target.value)
     }
-    filterRegion(config.region)
+    filterRegion('us')
   }
 </script>
 </body>
