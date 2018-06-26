@@ -131,7 +131,7 @@ select {-webkit-appearance: none; -moz-appearance: none; appearance: none}
 #head {background: #0c9cdc}
 #head h1 {display: inline-block; font-size: 21px; color: #f8f8f8; font-weight: 600; margin: 0; padding: 10px}
 #region {color: white; float: right; font-weight: 600; background: #0a7cbc; padding: 4px 10px; margin: 5px}
-body {background: #f8f8f8; margin: 0; padding: 0}
+body {background: #fafaff; margin: 0; padding: 0}
 #table {margin: 0 10px}
 table {border-collapse: collapse}
 tr {border-bottom: 1px solid #0cd}
@@ -170,6 +170,12 @@ td {padding: 6px 0}
   .pic {
     width: 160px;
     height: 70px;
+  }
+}
+@media (min-width: 1025px) {
+  #table {
+    width: 1000px;
+    margin: 0 auto;
   }
 }
 #bolt .pic {background-image: url('bolt.png')}
