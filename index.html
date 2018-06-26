@@ -152,6 +152,18 @@ td {padding: 6px 0}
 }
 .edit {background: white; border: 1px solid #0de;display: inline-block;
     padding: 2px 5px}
+.mob {display: none}
+@media (max-width: 414px) {
+  .mob {
+    display: inline-block;
+  }
+}
+.desk {display: none}
+@media (min-width: 1025px) {
+  .desk {
+    display: inline-block;
+  }
+}
 @media (max-width: 414px) {
   #head h1 {font-size: 16px}
   #region {font-size: 15px}
@@ -172,10 +184,15 @@ td {padding: 6px 0}
     height: 70px;
   }
 }
+.intro {margin: 30px 10px}
 @media (min-width: 1025px) {
   #table {
     width: 1000px;
     margin: 0 auto;
+  }
+  .intro {
+    width: 1000px;
+    margin: 30px auto;
   }
 }
 #bolt .pic {background-image: url('bolt.png')}
@@ -188,7 +205,6 @@ td {padding: 6px 0}
 #model_s .pic {background-image: url('model_s.png')}
 #soul .pic {background-image: url('soul.png')}
 #zoe .pic {background-image: url('zoe.png')}
-.intro {margin: 30px 10px}
 </style>
 <script>
   const id = i => document.getElementById(i)
@@ -197,7 +213,7 @@ td {padding: 6px 0}
   const h = (a, b) => a.innerHTML = b
 
   const regions = {
-    us: {moneyUnit: '$', locale: 'en-us', rangeUnit: 'Mi'},
+    us: {moneyUnit: '$', locale: 'en-us', rangeUnit: `<span class='mob'>Mi</span><span class='desk'>Miles</span>`},
     nl: {moneyUnit: '€', locale: 'nl-nl', rangeUnit: 'Km'}
   }
 
